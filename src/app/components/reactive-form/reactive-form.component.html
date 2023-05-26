@@ -1,0 +1,22 @@
+<form [formGroup]="formGroup" (ngSubmit)="submitForm()">
+  <div>
+    <label>eMail:</label>
+    <input formControlName="email">
+  </div>
+  <div>
+    <label>Password:</label>
+    <input [placeholder]="password.invalid ? 'Not valid' : ''" type="password" formControlName="password">
+    <span *ngIf="password.invalid">
+      <span *ngIf="password.errors?.['required']"> Password cant be empty!</span>
+      <span *ngIf="password.errors?.['minlength']"> Password is too short!</span>
+    </span>
+  </div>
+  <div>
+    <label>Newsletter Subscription:</label>
+    <input type="checkbox" checked formControlName="newsletter">
+  </div>
+  <div>
+    <input type="submit" [disabled]="formGroup.invalid">
+    <span *ngIf="formGroup.invalid"> Invalid input</span>
+  </div>
+</form>

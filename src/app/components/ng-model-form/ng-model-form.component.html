@@ -1,0 +1,23 @@
+<form #myForm="ngForm" (ngSubmit)="submitForm()"> <!-- myForm variabile che si può usare solo in questa component. ngForm controlla se i dati sono ok-->
+  <div>
+    <label>eMail:</label>
+    <input email name="email" required [(ngModel)]="data.email">
+  </div>
+  <div>
+    <label>Password:</label>
+    <input [placeholder]="pass.invalid ? 'Not valid' : ''" #pass="ngModel" type="password" name="password" required minlength="8" [(ngModel)]="data.password">
+    <!-- Come placeholder metto Not Valid se il controllo fallisce, oppure...-->
+    <span *ngIf="pass.invalid">  <!-- Controllo del campo singolo, se fallisce mostra il messaggio-->
+      <span *ngIf="pass.errors?.['required']"> Password cant be empty!</span>
+      <span *ngIf="pass.errors?.['minlength']"> Password is too short!</span>
+    </span>
+  </div>
+  <div>
+    <label>Newsletter Subscription:</label>
+    <input type="checkbox" name="newsletter" checked [(ngModel)]="data.newsletter">
+  </div>
+  <div>
+    <input type="submit" [disabled]="myForm.form.invalid"> <!-- Controllo dei campi, se fallisce disattiva Submit-->
+    <span *ngIf="myForm.form.invalid"> Invalid input</span> <!-- Controllo dei campi, se fallisce mostra questo span-->
+  </div>
+</form>

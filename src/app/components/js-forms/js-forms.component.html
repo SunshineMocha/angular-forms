@@ -1,0 +1,17 @@
+<form id="{{ id }}" (submit)="submitForm($event)"> <!-- onSubmit prende anche invio, onClick no. In Typescript (click) e (submit)-->
+  <div>
+    <label for="email">eMail:</label>
+    <input id="email" type="email" name="email" required>
+  </div>
+  <div>
+    <label for="password">Password:</label>
+    <input id="password" type="password" name="password" required minlength="8">
+  </div>
+  <div>
+    <label for="newsletter">Newsletter Subscription:</label>
+    <input id="newsletter" type="checkbox" name="newsletter" checked>
+  </div>
+  <div>
+    <input type="submit">
+  </div>
+</form>
