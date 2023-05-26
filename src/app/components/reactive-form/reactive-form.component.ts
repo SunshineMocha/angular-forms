@@ -19,6 +19,10 @@ export class ReactiveFormComponent {
     newsletter: new FormControl(this.data.newsletter)
   });
 
+  ngOnInit(){
+    this.formGroup.valueChanges.subscribe((val)=> console.log(val))
+  }
+
   get email(){
     return this.formGroup.get("email") as FormControl
   }
